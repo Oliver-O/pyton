@@ -1,6 +1,6 @@
 """
 姓名:oliver
-1、写函数，，用户传入修改的文件名，与要修改的内容，执行函数，完成批了修改操作
+写函数，用户传入修改的文件名，与要修改的内容，执行函数，完成批了修改操作
 """
 
 
@@ -33,6 +33,7 @@ def file_alter(name):
     except FileNotFoundError:
         print("无此文件！")
         exit()
+
 
 
 def main():
