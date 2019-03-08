@@ -4,8 +4,10 @@
 3、写函数，判断用户传入的对象（字符串、列表、元组）长度是否大于5。
 4、写函数，检查传入列表的长度，如果大于2，那么仅保留前两个长度的内容，并将新内容返回给调用者。
 5、写函数，检查获取传入列表或元组对象的所有奇数位索引对应的元素，并将其作为新列表返回给调用者。
-
-时间: 2019/03/07
+6、写函数，检查字典的每一个value的长度,如果大于2，那么仅保留前两个长度的内容，并将新内容返回给调用者。
+dic = {"k1": "v1v1", "k2": [11,22,33,44]}
+PS:字典中的value只能是字符串或列表
+时间: 2019/03/08
 
 """
 
@@ -72,12 +74,44 @@ def odd_items(key_in):
         print("输入内容非列表或元组！")
 
 
+def len_dic_value(key_in):
+    try:
+        item = eval(key_in)
+        out_put = {}
+        while type(item) == dict :
+            if len(item) > 2:
+                for k in item.keys():
+                    if type(item[k]) == str or type(item[k]) == list:
+                        out_put[k] = item[k]
+                        if len(out_put) < 2:
+                            continue
+                        elif len(out_put) == 2:
+                            print(out_put)
+                            exit()
+                        else:
+                            exit()
+                    else:
+                        print("字典中的值包含，非字符串或列表元素！")
+                        exit()
+            else:
+                print("字典长度不大于2！")
+                exit()
+        else:
+            print("输入内容不是字典！")
+            exit()
+    except SyntaxError:
+        print("输入内容不是字典！")
+        exit()
+
+
 def main():
     key_in = input("请输入需分析的内容：")
     # str_analysis(key_in)
     # len_check(key_in)
     # lst_in_check(key_in)
-    odd_items(key_in)
+    # odd_items(key_in)
+    len_dic_value(key_in)
+
 
 if __name__ == "__main__":
     main()
